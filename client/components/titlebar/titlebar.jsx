@@ -1,9 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { AppBar , Popover, EnhancedButton, FontIcon, ToolbarGroup, ToolbarSeparator,  } from 'material-ui';
 import { AppToolbar } from './toolbar';
 import { AccountCircleIcon } from '../icons';
+import { connect } from 'react-redux';
 
-export class Titlebar extends Component {
+class TitlebarComponent extends Component {
+    
+    static defaultProps = {
+      title: 'Application Title',
+      windowWidth: 300
+    };
+  
+    static propTypes = {
+      title: PropTypes.string,
+      windowWidth: PropTypes.number
+    };
+  
     render() {
       return <div
         style={{
@@ -27,7 +39,7 @@ export class Titlebar extends Component {
                 overflow:'hidden',
                 border:'1px transparent solid',
                 backgroundColor: 'rgba(255,255,255,0.3)',
-                'border-radius':'50%'
+                borderRadius:'50%'
               }}
             >
               <EnhancedButton
@@ -44,10 +56,16 @@ export class Titlebar extends Component {
             </div>
           }
         />
-        <AppToolbar />
+        <AppToolbar windowWidth={this.props.windowWidth} /> 
       </div>;
     }
     //<AccountCircleIcon style={{width:100, height:100}} />
     //iconElementLeft={<IconButton iconClassName="material-icons">menu</IconButton>}
     //iconElementRight={<IconButton iconClassName="material-icons">more_vert</IconButton>}
-}
+    
+}; //TitlebarComponent
+
+//connect state from redux to properties
+export const Titlebar = connect(state => ({
+  windowWidth: state.window.size.width
+}))(TitlebarComponent);

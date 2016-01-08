@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { App } from './App';
+import { Provider } from 'react-redux'
+import { App } from './containers/App';
+import store from './store';
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -11,4 +13,10 @@ injectTapEventPlugin();
 
 require('./index.css');
 
-render(<App />, document.getElementById('root'));
+var rootElement = document.getElementById('root')
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  rootElement
+);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   NavigationMenuIcon,
   NavigationMoreorizIcon,
@@ -31,7 +32,7 @@ export function AppToolbar(props) {
         <MenuItem value={5} primaryText="Complete Text" />
         <MenuItem value={6} primaryText="Active Voice" />
         <MenuItem value={7} primaryText="Active Text" />
-      </DropDownMenu>
+      </DropDownMenu>      
     </ToolbarGroup>
 
     <ToolbarGroup float="right">
@@ -46,17 +47,19 @@ export function AppToolbar(props) {
       </IconMenu>
     </ToolbarGroup>
     
-    <ToolbarGroup float="right">
-      <ToolbarTitle text="Options" />
-      
-      <IconButton touch={true}>
-        <ContentSortIcon />
-      </IconButton>
-      
-      <ToolbarSeparator />
-      <RaisedButton label="Create Broadcast" primary={true} />
-      
-    </ToolbarGroup>
+    {
+      props.windowWidth <= 750 ? null : <ToolbarGroup float="right">
+        <ToolbarTitle text="Options" />
+        
+        <IconButton touch={true}>
+          <ContentSortIcon />
+        </IconButton>
+        
+        <ToolbarSeparator />
+        <RaisedButton label="Create Broadcast" primary={true} />
+        
+      </ToolbarGroup>
+    }
 
   </Toolbar>
 };

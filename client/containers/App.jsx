@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react';
 
-import { NICE, SUPER_NICE } from './config/colors';
+import { NICE, SUPER_NICE } from '../config/colors';
 
-import {Counter, Titlebar} from './components';
+import {Counter, Titlebar} from '../components';
 
 
 export class App extends Component {
