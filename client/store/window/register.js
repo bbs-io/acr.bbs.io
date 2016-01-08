@@ -12,7 +12,7 @@ export default function registerStore(store) {
       height: window.innerHeight
     });
     
-    console.log('resize', action);
+    //console.log('resize', action);
     
     store.dispatch(action);
   },50), true);

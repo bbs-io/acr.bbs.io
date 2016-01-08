@@ -3,13 +3,25 @@ import React, { Component } from 'react';
 
 import { NICE, SUPER_NICE } from '../config/colors';
 
-import {Counter, Titlebar} from '../components';
+import {Counter, Titlebar, WindowSize } from '../components';
 
 
 export class App extends Component {
   render() {
     return <div>
-      
+      <WindowSize 
+        style={{
+          position: 'fixed',
+          top: 'auto',
+          left: 'auto',
+          right: '0',
+          bottom: '0',
+          zIndex: '10',
+          backgroundColor: '#888',
+          color: '#fff',
+          padding: 5
+        }} 
+      />
       <Titlebar title="Title" />
       
       <div style={{paddingTop:120}}>
