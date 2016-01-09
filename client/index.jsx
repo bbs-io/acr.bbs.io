@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux'
 import { App } from './containers/App';
-import store from './store';
+import { create as createStore } from './store';
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -13,7 +13,9 @@ injectTapEventPlugin();
 
 require('./index.css');
 
-var rootElement = document.getElementById('root')
+const rootElement = document.getElementById('root')
+const store = createStore(); //TODO: lookup from sessionstate/localstate/server, etc
+
 render(
   <Provider store={store}>
     <App />

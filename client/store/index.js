@@ -1,15 +1,12 @@
-import { createStore, combineReducers } from 'redux';
-import * as windowState from './window';
+import { createStore } from 'redux';
+import reducers from './reducers';
+import register from './register';
 
-console.log(windowState);
+//console.log(windowStore);
 
-//create store
-const store = createStore(combineReducers({
-  window: windowState.reducers
-}));
-
-//register windowstate events
-windowState.register(store);
-
-//export the store
-export {store as default};
+export function create(currentState={}) {
+  //create store
+  const store = createStore(reducers, currentState);
+  register(store);
+  return store;
+}
