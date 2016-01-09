@@ -15,6 +15,7 @@ class WindowSize extends Component {
 
   render() {
     let {window} = this.props;
+    
     let size = `${window.size.width}x${window.size.height} (${window.position.left},${window.position.top})`;
     
     return <div style={this.props.style}>

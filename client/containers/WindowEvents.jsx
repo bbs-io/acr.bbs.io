@@ -9,19 +9,19 @@ export class WindowEvents extends Component {
 
   constructor() {
     super();
-    this.onChange = _.debounce(()=>{ this.props.dispatch(changed()); }, 50);
+    this.onChange = _.debounce(()=>{ changed(this.props.dispatch); }, 50);
   }
 
   componentDidMount(){
     if (!window) return;
     window.addEventListener('resize', this.onChange, true);
-    //window.addEventListener('scroll', this.onChange, true);
+    window.addEventListener('scroll', this.onChange, true);
   }
 
   componentWillUnmount(){
     if (!window) return;
     window.removeEventListener('resize', this.onChange, true);
-    //window.removeEventListener('scroll', this.onChange, true);
+    window.removeEventListener('scroll', this.onChange, true);
   }
   
   render() {
