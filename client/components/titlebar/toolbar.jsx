@@ -35,7 +35,7 @@ export function AppToolbar(props) {
       </DropDownMenu>      
     </ToolbarGroup>
 
-    <ToolbarGroup float="right">
+    <ToolbarGroup float="right" style={{marginRight:-24}}>
       <ToolbarSeparator />
       <IconMenu iconButtonElement={
           <IconButton touch={true}>
