@@ -1,12 +1,7 @@
-import { createStore } from 'redux';
-import reducers from './reducers';
-import register from './register';
-
-//console.log(windowStore);
-
-export function create(currentState={}) {
-  //create store
-  const store = createStore(reducers, currentState);
-  register(store);
-  return store;
+// Use ProvidePlugin (Webpack) or loose-envify (Browserify)
+// together with Uglify to strip the dev branch in prod build.
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./configureStore.prod');
+} else {
+  module.exports = require('./configureStore.dev');
 }

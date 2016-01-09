@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux'
-import { App } from './containers/App';
-import { create as createStore } from './store';
+import { App, DevTools, WindowEvents } from './containers';
+import {default as createStore} from './store';
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -18,7 +18,11 @@ const store = createStore(); //TODO: lookup from sessionstate/localstate/server,
 
 render(
   <Provider store={store}>
-    <App />
+    <div>
+      <App />
+      <DevTools />
+      <WindowEvents />
+    </div>
   </Provider>,
   rootElement
 );

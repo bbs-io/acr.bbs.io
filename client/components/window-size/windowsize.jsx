@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-
-
-class WindowSizeComponent extends Component {
+class WindowSize extends Component {
   
   static defaultProps = {
     windowWidth: 300
@@ -16,8 +14,8 @@ class WindowSizeComponent extends Component {
   };
 
   render() {
-    let {windowWidth, windowHeight} = this.props;
-    let size = `${windowWidth}x${windowHeight}`;
+    let {window} = this.props;
+    let size = `${window.size.width}x${window.size.height} (${window.position.left},${window.position.top})`;
     
     return <div style={this.props.style}>
       {size}
@@ -26,7 +24,6 @@ class WindowSizeComponent extends Component {
 }
 
 //connect state from redux to properties
-export const WindowSize = connect(state => ({
-  windowWidth: state.window.size.width,
-  windowHeight: state.window.size.height
-}))(WindowSizeComponent);
+export default connect(state => ({
+  window: state.window
+}))(WindowSize);

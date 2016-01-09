@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 
 import { NICE, SUPER_NICE } from '../config/colors';
 
-import {Counter, Titlebar, WindowSize } from '../components';
-
+import { Counter, Titlebar, WindowSize } from '../components';
 
 export class App extends Component {
   render() {

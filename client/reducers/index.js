@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import * as windowStore from './window';
+import window from './window';
 
 export default combineReducers({
-  window: windowStore.reducers
+  window
 });
