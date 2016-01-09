@@ -4,6 +4,7 @@ import React from 'react';
 import { createDevTools } from 'redux-devtools';
 
 // Monitors are separate packages, and you can make a custom one
+import FilterMonitor from 'redux-devtools-filter-actions';
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
 
@@ -14,6 +15,8 @@ export default createDevTools(
   // Here, we put LogMonitor inside a DockMonitor.
   <DockMonitor toggleVisibilityKey='ctrl-h'
                changePositionKey='ctrl-q'>
-    <LogMonitor theme='tomorrow' />
+    <FilterMonitor blacklist={['WINDOW_CHANGED']}>
+      <LogMonitor theme='tomorrow' />
+    </FilterMonitor>
   </DockMonitor>
 );
