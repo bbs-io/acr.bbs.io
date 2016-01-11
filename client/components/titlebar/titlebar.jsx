@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { AppBar , Popover, EnhancedButton, FontIcon, ToolbarGroup, ToolbarSeparator,  } from 'material-ui';
+import { AppBar, EnhancedButton, Tabs, Tab } from 'material-ui';
 import { AppToolbar } from './toolbar';
 import { AccountCircleIcon } from '../icons';
 import { connect } from 'react-redux';
+import { pushPath } from 'redux-simple-router';
 
 class TitlebarComponent extends Component {
     
@@ -13,10 +14,29 @@ class TitlebarComponent extends Component {
 
   static propTypes = {
     title: PropTypes.string,
-    windowWidth: PropTypes.number
+    windowWidth: PropTypes.number,
+    routing: PropTypes.object
   };
 
+  handleTab = (tab) => {
+    console.log('handleTab', tab.props.route);
+    console.log(pushPath(tab.props.route));
+    this.props.dispatch(pushPath(tab.props.route));
+  }
+  
+  currentTabIndex = () => {
+    console.log('toolbar path', this.props.routing.path)
+    console.log('is bar', this.props.routing.path=='/bar')
+
+    switch (this.props.routing.path) {
+      case '/bar': return 2;
+      case '/foo': return 1;
+    }
+    return 0;
+  }
+
   render() {
+    
     return <div
       style={{
         position:'fixed',
@@ -56,9 +76,23 @@ class TitlebarComponent extends Component {
           </div>
         }
       />
-      <AppToolbar windowWidth={this.props.windowWidth} /> 
+      <Tabs initialSelectedIndex={this.currentTabIndex()}>
+        <Tab
+          label="Home"
+          route="/"
+          onActive={this.handleTab} />
+        <Tab
+          label="Foo"
+          route="/foo"
+          onActive={this.handleTab} />
+        <Tab
+          label="Bar"
+          route="/bar"
+          onActive={this.handleTab} />
+      </Tabs>
     </div>;
   }
+  //<AppToolbar windowWidth={this.props.windowWidth} />
   //<AccountCircleIcon style={{width:100, height:100}} />
   //iconElementLeft={<IconButton iconClassName="material-icons">menu</IconButton>}
   //iconElementRight={<IconButton iconClassName="material-icons">more_vert</IconButton>}
@@ -67,5 +101,6 @@ class TitlebarComponent extends Component {
 
 //connect state from redux to properties
 export const Titlebar = connect(state => ({
-  windowWidth: state.window.size.width
+  windowWidth: state.window.size.width,
+  routing: state.routing
 }))(TitlebarComponent);
