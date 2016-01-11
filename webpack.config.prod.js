@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.json']
   },
   devtool: 'source-map',
   entry: [
@@ -33,6 +33,11 @@ module.exports = {
         test: /\.(js|jsx)$/,
         loaders: ['babel'],
         include: path.join(__dirname, 'client')
+      },
+
+      {
+        test: /\.(json)$/,
+        loaders: ['json']
       },
 
       {

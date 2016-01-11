@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 class WindowSize extends Component {
   
+  static contextTypes = {
+    freeStyle: PropTypes.object
+  };
+  
   static defaultProps = {
     windowWidth: 300
   };
@@ -14,11 +18,16 @@ class WindowSize extends Component {
   };
 
   render() {
+    var className = this.context.freeStyle.registerStyle({
+      border: '1px solid rgba(60,60,60,0.5)',
+      borderRadius: 5
+    });
+    
     let {window} = this.props;
     
     let size = `${window.size.width}x${window.size.height} (${window.position.left},${window.position.top})`;
     
-    return <div style={this.props.style}>
+    return <div className={className} style={this.props.style}>
       {size}
     </div>
   }

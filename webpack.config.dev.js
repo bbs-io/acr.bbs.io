@@ -6,7 +6,7 @@ var precss       = require('precss');
 
 module.exports = {
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.json']
   },
   devtool: 'cheap-module-eval-source-map',
   entry: [

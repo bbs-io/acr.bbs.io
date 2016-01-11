@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import { NICE, SUPER_NICE } from '../../config/colors';
 
-import { Counter } from '../counter/counter.jsx'
+import { Counter } from '../../components';
 
 export default class AppHome extends Component {
   render(){ 

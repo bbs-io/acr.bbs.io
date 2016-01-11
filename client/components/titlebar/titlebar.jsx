@@ -22,7 +22,7 @@ class TitlebarComponent extends Component {
     console.log('handleTab', tab.props.route);
     console.log(pushPath(tab.props.route));
     this.props.dispatch(pushPath(tab.props.route));
-  }
+  };
   
   currentTabIndex = () => {
     console.log('toolbar path', this.props.routing.path)
@@ -33,7 +33,7 @@ class TitlebarComponent extends Component {
       case '/foo': return 1;
     }
     return 0;
-  }
+  };
 
   render() {
     
