@@ -1,9 +1,6 @@
 import window from 'global/window';
-import ss from 'json-stable-stringify';
 
-export const WINDOW_CHANGED = 'WINDOW_CHANGED';
-
-const defaultState = {
+export const defaultState = {
   size: {
     width: window.innerWidth || 360,
     height: window.innerHeight || 480
@@ -14,20 +11,7 @@ const defaultState = {
   }
 }
 
-var currentStateString = ss(getWindowState());
-
-export function changed(dispatch) {
-  var newState = getWindowState();
-  var newStateString = ss(newState);
-  if (currentStateString == newStateString) return;
-  currentStateString = newStateString;
-  dispatch({
-    type: WINDOW_CHANGED,
-    window: newState
-  });
-}
-
-export function getWindowState() {
+export default function getWindowState() {
   if (!window == window.self && window.document) return defaultState;
   
   const doc = window.document.documentElement;

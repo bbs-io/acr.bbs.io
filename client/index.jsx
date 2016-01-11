@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux'
-import { App, DevTools, WindowEvents } from './containers';
+import { App, DevTools } from './containers';
 import {default as createStore} from './store';
 import { createHistory } from 'history'
 import { syncReduxAndRouter } from 'redux-simple-router'
@@ -25,7 +25,6 @@ render(
     <div>
       <App history={history} />
       <DevTools />
-      <WindowEvents />
     </div>
   </Provider>,
   rootElement

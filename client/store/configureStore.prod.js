@@ -1,9 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
+import windowEventMiddleware from './window';
+import promiseMiddleware from 'redux-promise';
 
 const finalCreateStore = compose(
-  // Middleware you want to use in production:
-  //applyMiddleware(p1, p2, p3),
+  applyMiddleware(
+    promiseMiddleware,
+    windowEventMiddleware
+  ),
   // Other store enhancers if you use any
 )(createStore);
 

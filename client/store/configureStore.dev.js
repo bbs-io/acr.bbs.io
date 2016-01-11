@@ -2,10 +2,15 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 import { persistState } from 'redux-devtools';
+import windowEventMiddleware from './window';
+import promiseMiddleware from 'redux-promise';
 
 const finalCreateStore = compose(
   // Middleware you want to use in development:
-  //applyMiddleware(),
+  applyMiddleware(
+    promiseMiddleware,
+    windowEventMiddleware
+  ),
   
   // Required! Enable Redux DevTools with the monitors you chose
   DevTools.instrument(),
