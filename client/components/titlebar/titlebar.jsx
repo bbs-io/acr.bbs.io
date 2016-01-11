@@ -25,9 +25,6 @@ class TitlebarComponent extends Component {
   };
   
   currentTabIndex = () => {
-    console.log('toolbar path', this.props.routing.path)
-    console.log('is bar', this.props.routing.path=='/bar')
-
     switch (this.props.routing.path) {
       case '/bar': return 2;
       case '/foo': return 1;
