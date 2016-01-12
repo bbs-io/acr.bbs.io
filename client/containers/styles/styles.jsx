@@ -11,13 +11,12 @@ export class Styles extends Component {
   };
   
   render() {
-    console.log('freestyle-context', this.context.freeStyle);
+    //console.log('freestyle-context', this.context.freeStyle);
     //
     
     return <div>
       {this.props.children}
       <Style.Element />
-      <div>FIND ME</div>
     </div>
   }
   

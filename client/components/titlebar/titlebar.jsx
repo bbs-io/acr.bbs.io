@@ -19,8 +19,8 @@ class TitlebarComponent extends Component {
   };
 
   handleTab = (tab) => {
-    console.log('handleTab', tab.props.route);
-    console.log(pushPath(tab.props.route));
+    //console.log('handleTab', tab.props.route);
+    //console.log(pushPath(tab.props.route));
     this.props.dispatch(pushPath(tab.props.route));
   };
   

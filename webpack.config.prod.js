@@ -1,6 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var autoprefixer = require('autoprefixer');
+var precss       = require('precss');
+
 module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.json']
