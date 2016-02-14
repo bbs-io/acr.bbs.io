@@ -1,9 +1,18 @@
 {
-  "presets": ["react", "es2015", "stage-0"],
-  
   "env": {
     "development": {
-      "presets": ["react-hmre", "es2015", "stage-0"]
+      "presets": ["react-hmre", "es2015", "stage-0"] 
+    },
+    "production": {
+      "presets": ["react", "es2015", "stage-0"]
+    },
+    "server_development": {
+      "presets": ["react", "es2015-node5", "stage-0"],
+      "plugins": ["transform-async-to-generator"]
+    },
+    "server_production": {
+      "presets": ["react", "es2015-node5", "stage-0"],
+      "plugins": ["transform-async-to-generator"]
     }
   }
 }

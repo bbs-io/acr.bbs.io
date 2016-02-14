@@ -9,14 +9,16 @@ module.exports = {
     extensions: ['', '.js', '.jsx', '.json']
   },
   devtool: 'cheap-module-eval-source-map',
-  entry: [
-    'eventsource-polyfill', // necessary for hot reloading with IE
-    'webpack-hot-middleware/client',
-    './client/index'
-  ],
+  entry: {
+    app: [
+      'eventsource-polyfill', // necessary for hot reloading with IE
+      'webpack-hot-middleware/client',
+      './client/index'
+    ]
+  },
   output: {
     path: path.join(__dirname, 'static'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: '/static/'
   },
   plugins: [
@@ -38,7 +40,7 @@ module.exports = {
 
       {
         test:   /\.css$/,
-        loader: "style-loader!css-loader!postcss-loader"
+        loader: "style-loader!css-loader?sourceMap!postcss-loader?sourceMap"
       }
     ]
   },

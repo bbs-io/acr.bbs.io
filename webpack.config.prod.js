@@ -9,12 +9,17 @@ module.exports = {
     extensions: ['', '.js', '.jsx', '.json']
   },
   devtool: 'source-map',
-  entry: [
-    './client/index'
-  ],
+  entry: {
+    'app': [
+      './client/index'
+    ],
+    'server-app': [
+      './client/index-server'
+    ]
+  },
   output: {
     path: path.join(__dirname, 'static'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: '/static/'
   },
   plugins: [
@@ -23,12 +28,16 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
-    }),
+    })
+    // uglified via npm task
+    /*
+    ,
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false
       }
     })
+    */
   ],
   module: {
     loaders: [
@@ -45,7 +54,7 @@ module.exports = {
 
       {
         test:   /\.css$/,
-        loader: "style-loader!css-loader!postcss-loader"
+        loader: "style-loader!css-loader?sourceMap!postcss-loader?sourceMap"
       }
     ]
   },

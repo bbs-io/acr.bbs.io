@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux'
-import { App, DevTools } from './containers';
+import App from './containers/App';
 import {default as createStore} from './store';
 import { createHistory } from 'history'
 import { syncReduxAndRouter } from 'redux-simple-router'
@@ -15,17 +14,15 @@ injectTapEventPlugin();
 
 require('./index.css');
 
-const rootElement = document.getElementById('root')
-const store = createStore(); //TODO: lookup from sessionstate/localstate/server, etc
+const rootElement = document.getElementById('root');
+
+//TODO: lookup from sessionstate/localstate/server, etc
+const store = createStore();
+
 const history = createHistory();
 syncReduxAndRouter(history, store);
 
 render(
-  <Provider store={store}>
-    <div>
-      <App history={history} />
-      <DevTools />
-    </div>
-  </Provider>,
+  <App history={history} store={store} production={true} />,
   rootElement
 );
